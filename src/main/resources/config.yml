@@ -4,6 +4,7 @@ mySQL:
   user: ""
   password: ""
 
+
 menu-name: "Display Optimization"
 
 # Entity render distance (server)
