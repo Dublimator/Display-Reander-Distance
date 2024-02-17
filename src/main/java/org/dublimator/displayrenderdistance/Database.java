@@ -27,27 +27,17 @@ public class Database {
     public void initializeDatabase() throws SQLException {
         try (Statement statement = getConnection().createStatement()) {
 
-            String sql = "CREATE TABLE IF NOT EXISTS DRDistance(player_uuid varchar(36), distance int)";
+            String sql = "CREATE TABLE IF NOT EXISTS DRDistance(player_uuid varchar(36), distance int, PRIMARY KEY (player_uuid))";
             statement.execute(sql);
         }
     }
 
-    public void addPlayerDistance(UUID uuid, Integer distance) throws SQLException {
-        try (PreparedStatement statement = getConnection().prepareStatement("INSERT INTO DRDistance (player_uuid, distance) " +
-                "VALUES (? ,?) ")) {
+    public void updatePlayerDistance(UUID uuid, Integer distance) throws SQLException {
+        try (PreparedStatement statement = getConnection().prepareStatement(
+                "INSERT INTO DRDistance (player_uuid, distance) VALUES (?,?) ON DUPLICATE KEY UPDATE distance=?")) {
             statement.setString(1, uuid.toString());
             statement.setInt(2, distance);
-
-            statement.executeUpdate();
-        }
-
-    }
-
-    public void updatePlayerDistance(UUID uuid, Integer distance) throws SQLException {
-        try (PreparedStatement statement = getConnection().prepareStatement("UPDATE DRDistance SET distance = ? WHERE player_uuid = ?")) {
-
-            statement.setInt(1, distance);
-            statement.setString(2, uuid.toString());
+            statement.setInt(3, distance);
 
             statement.executeUpdate();
         }
@@ -65,15 +55,6 @@ public class Database {
             try (ResultSet resultSet = statement.executeQuery(sql)) {
                 if (resultSet.next()) {
                     distance = resultSet.getInt("distance");
-                } else {
-                    Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
-                        try {
-                            addPlayerDistance(uuid, -1);
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        }
-                    });
-
                 }
             }
 
