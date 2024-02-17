@@ -1,28 +1,25 @@
-
 mySQL:
   database: ""
   host: ""
   user: ""
   password: ""
 
+menu-name: "Display Optimization"
 
-menu-name: "Оптимизация Дисплеев"
-
-# Дистанция прорисовки сущностей
+# Entity render distance (server)
 server-max-distance: 100
 
-# Как часто проверяются дисплеи вокруг игрока в тиках (Может повлиять на нагрузку)
+# How often displays around the player are checked in ticks (May affect server load)
 update-displays: 3
 
-# Звук нажатия на кнопки меню
+# Button click sound for the menu
 button-sound: BLOCK_NOTE_BLOCK_BANJO
 
-
-# Дистанция прогрузки в блоках
+# Block rendering distance in blocks
 # slot: 0-8
-# Используй distance=0 чтобы отключить все дисплем и distance=-1 чтобы показать
-# Используй custom-model-data=0 чтобы предмет не получил её значение
-# Можно добавить от 1 до 9 кнопок
+# Use distance=0 to disable all displays and distance=-1 to show
+# Use custom-model-data=0 to prevent the item from receiving its value
+# You can add from 1 to 9 buttons
 buttons:
   all-off:
     distance: 0
