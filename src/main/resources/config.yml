@@ -1,0 +1,70 @@
+
+mySQL:
+  database: ""
+  host: ""
+  user: ""
+  password: ""
+
+
+menu-name: "Оптимизация Дисплеев"
+
+# Дистанция прорисовки сущностей
+server-max-distance: 100
+
+# Как часто проверяются дисплеи вокруг игрока в тиках (Может повлиять на нагрузку)
+update-displays: 3
+
+# Звук нажатия на кнопки меню
+button-sound: BLOCK_NOTE_BLOCK_BANJO
+
+
+# Дистанция прогрузки в блоках
+# slot: 0-8
+# Используй distance=0 чтобы отключить все дисплем и distance=-1 чтобы показать
+# Используй custom-model-data=0 чтобы предмет не получил её значение
+# Можно добавить от 1 до 9 кнопок
+buttons:
+  all-off:
+    distance: 0
+    slot: 1
+    item: PAPER
+    custom-model-data: 1
+    button-name: "all-off"
+    button-lore:
+      - "all-off"
+
+  distance-low:
+    distance: 10
+    slot: 3
+    item: PAPER
+    custom-model-data: 1
+    button-name: "Low"
+    button-lore:
+      - "Low"
+
+  distance-medium:
+    distance: 20
+    slot: 4
+    item: PAPER
+    custom-model-data: 1
+    button-name: "Medium"
+    button-lore:
+      - "Medium"
+
+  distance-high:
+    distance: 30
+    slot: 5
+    item: PAPER
+    custom-model-data: 1
+    button-name: "High"
+    button-lore:
+      - "High"
+
+  all-on:
+    distance: -1
+    slot: 7
+    item: PAPER
+    custom-model-data: 1
+    button-name: "all-on"
+    button-lore:
+      - "all-on"
