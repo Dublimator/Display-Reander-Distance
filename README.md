@@ -11,7 +11,7 @@ Certainly, here's the modified version without the last three sections:
 
 ## Description
 
-The DispalyRenderDistance plugin is designed to offer flexible rendering distance settings for item displays in your Minecraft server. It allows users to customize up to 9 variants of rendering distances, giving players the freedom to choose the one that best suits their needs through commands such as `/drd` or the DRDistance menu.
+The DispalyRenderDistance plugin is designed to offer flexible rendering distance settings for item displays in your Minecraft server. It allows users to customize up to 9 variants of rendering distances, giving players the freedom to choose the one that best suits their needs through commands such as `/drd` or the `/DRDistance menu`.
 
 ## Features
 
@@ -23,7 +23,7 @@ The DispalyRenderDistance plugin is designed to offer flexible rendering distanc
 ## Installation
 
 1. **Download:**
-    - Download the latest release from the [Releases](https://github.com/yourusername/Dispaly-Render-Distance/releases) section.
+    - Download the latest release from the [Releases](https://github.com/Dublimator/Display-Render-Distance/releases) section.
 2. **Installation:**
     - Place the downloaded `.jar` file into your server's `plugins` directory.
 3. **Restart:**
@@ -43,7 +43,6 @@ The DispalyRenderDistance plugin is designed to offer flexible rendering distanc
 - `/drd [distance]`: Set the rendering distance.
 - `/drd help`: Display help for using the plugin.
 - `/DRDistance reload`: Reload the plugin and apply new configurations.
-- (Add any additional commands here)
 
 ## Permissions
 
