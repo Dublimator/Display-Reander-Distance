@@ -1,5 +1,3 @@
-Certainly, here's the modified version without the last three sections:
-
 ---
 
 # DispalyRenderDistance Plugin
