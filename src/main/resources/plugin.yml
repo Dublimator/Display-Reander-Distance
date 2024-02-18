@@ -8,4 +8,14 @@ commands:
   drdistance:
     description: "render"
     usage: "/drdistance [menu, reload]"
-    aliases: ["drd"]
+  drd:
+    usage: "/drd"
+
+
+permissions:
+  drdistance.commands.menu:
+    description: "menu"
+  drdistance.commands.reload:
+    description: "reload"
+  drdistance.commands.drd:
+    description: "drd"

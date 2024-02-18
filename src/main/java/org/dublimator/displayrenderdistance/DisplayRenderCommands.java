@@ -24,7 +24,7 @@ public class DisplayRenderCommands implements CommandExecutor, TabExecutor {
         this.plugin = plugin;
 
         plugin.getCommand("drdistance").setExecutor(this);
-
+        plugin.getCommand("drd").setExecutor(this);
     }
 
 
@@ -37,18 +37,29 @@ public class DisplayRenderCommands implements CommandExecutor, TabExecutor {
 
         Player player = (Player) sender;
 
-        if (!(command.getName().equalsIgnoreCase(label))) {
+        if (command.getName().equalsIgnoreCase("drd") && player.hasPermission("drdistance.commands.drd")) {
             createMenu(player);
+            return true;
+        } else if (command.getName().equalsIgnoreCase("drd")) {
+            player.sendMessage("You do not have permission");
             return true;
         }
 
-        if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
+        if (args.length == 1 && args[0].equalsIgnoreCase("reload") && player.hasPermission("drdistance.commands.reload")) {
             plugin.reload();
             player.sendMessage("§7[§6DRDistance§7]§e Config reloaded");
             return true;
+        } else if (command.getName().equalsIgnoreCase("drd")) {
+            player.sendMessage("You do not have permission");
+            return true;
         }
-        if (args.length == 1 && args[0].equalsIgnoreCase("menu")) {
+
+
+        if (args.length == 1 && args[0].equalsIgnoreCase("menu") && player.hasPermission("drdistance.commands.menu")) {
             createMenu(player);
+            return true;
+        } else if (command.getName().equalsIgnoreCase("drd")) {
+            player.sendMessage("You do not have permission");
             return true;
         }
         return true;
@@ -56,8 +67,9 @@ public class DisplayRenderCommands implements CommandExecutor, TabExecutor {
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (args.length == 1 && command.getName().equalsIgnoreCase(label))
+        if (args.length == 1 && command.getName().equalsIgnoreCase("drdistance"))
             return Arrays.asList("menu", "reload");
+
 
         return new ArrayList<>();
     }

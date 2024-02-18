@@ -45,8 +45,9 @@ The DispalyRenderDistance plugin is designed to offer flexible rendering distanc
 
 ## Permissions
 
-- `drd.use`: Allows players to use DispalyRenderDistance commands.
-- `drd.admin`: Grants administrative access to DispalyRenderDistance plugin features.
+- `drdistance.commands.drd`: Allows the player to use the `/drd` shortcut command.
+- `drdistance.commands.menu`: Allows the player to use the `/drdistance menu` command.
+- `drdistance.commands.reload`: Allows the player to use the `/drdistance reload` command to reload the configuration.
 
 ## Configuration
 
