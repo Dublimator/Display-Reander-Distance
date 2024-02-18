@@ -40,28 +40,20 @@ public class DisplayRenderCommands implements CommandExecutor, TabExecutor {
         if (command.getName().equalsIgnoreCase("drd") && player.hasPermission("drdistance.commands.drd")) {
             createMenu(player);
             return true;
-        } else if (command.getName().equalsIgnoreCase("drd")) {
-            player.sendMessage("You do not have permission");
-            return true;
         }
 
         if (args.length == 1 && args[0].equalsIgnoreCase("reload") && player.hasPermission("drdistance.commands.reload")) {
             plugin.reload();
             player.sendMessage("§7[§6DRDistance§7]§e Config reloaded");
             return true;
-        } else if (command.getName().equalsIgnoreCase("drd")) {
-            player.sendMessage("You do not have permission");
-            return true;
         }
-
 
         if (args.length == 1 && args[0].equalsIgnoreCase("menu") && player.hasPermission("drdistance.commands.menu")) {
             createMenu(player);
             return true;
-        } else if (command.getName().equalsIgnoreCase("drd")) {
-            player.sendMessage("You do not have permission");
-            return true;
         }
+
+        player.sendMessage("You do not have permission");
         return true;
     }
 
