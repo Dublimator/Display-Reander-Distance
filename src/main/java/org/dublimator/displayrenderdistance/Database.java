@@ -6,6 +6,7 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import javax.swing.*;
 import java.sql.*;
 import java.util.UUID;
 
@@ -85,7 +86,7 @@ public class Database {
 
         this.config.setPoolName(plugin.getName() + "-" + UUID.randomUUID().toString().substring(3, 5));
         this.dataSource = new HikariDataSource(this.config);
-
+        this.dataSource.setMaxLifetime(17000);
         plugin.getLogger().info("Database connected");
     }
 
