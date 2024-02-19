@@ -21,35 +21,37 @@ public class Database {
         this.plugin = plugin;
     }
 
-    public Connection getConnection() throws SQLException {
+    private Connection getConnection() throws SQLException {
         return this.dataSource.getConnection();
     }
 
     public void initializeDatabase() throws SQLException {
-        try (Statement statement = getConnection().createStatement()) {
-
+        try (Connection connection = getConnection();
+             Statement statement = connection.createStatement()) {
             String sql = "CREATE TABLE IF NOT EXISTS DRDistance(player_uuid varchar(36), distance int, PRIMARY KEY (player_uuid))";
             statement.execute(sql);
         }
+
     }
 
     public void updatePlayerDistance(UUID uuid, Integer distance) throws SQLException {
-        try (PreparedStatement statement = getConnection().prepareStatement(
-                "INSERT INTO DRDistance (player_uuid, distance) VALUES (?,?) ON DUPLICATE KEY UPDATE distance=?")) {
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "INSERT INTO DRDistance (player_uuid, distance) VALUES (?,?) ON DUPLICATE KEY UPDATE distance=?")) {
+
             statement.setString(1, uuid.toString());
             statement.setInt(2, distance);
             statement.setInt(3, distance);
-
             statement.executeUpdate();
-        }
 
+        }
     }
 
 
     public int getDistance(UUID uuid) throws SQLException {
 
         String sql = "SELECT * FROM DRDistance WHERE player_uuid='" + uuid.toString() + "'";
-        try (Connection connection = this.getConnection();
+        try (Connection connection = getConnection();
              Statement statement = connection.createStatement()) {
 
             int distance = -1;
