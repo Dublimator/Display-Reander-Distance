@@ -31,9 +31,11 @@ public class GuiListener implements Listener {
             Map<UUID, Integer> playersDistance = plugin.getPlayersDistance();
             ConfigurationSection buttonsKeys = plugin.getConfig().getConfigurationSection("buttons");
 
+            assert buttonsKeys != null;
             for (String buttonKey : buttonsKeys.getKeys(false)) {
                 ConfigurationSection buttonMap = buttonsKeys.getConfigurationSection(buttonKey);
 
+                assert buttonMap != null;
                 if (buttonMap.getInt("slot") == event.getSlot()) {
 
                     playersDistance.put(player.getUniqueId(), buttonMap.getInt("distance"));

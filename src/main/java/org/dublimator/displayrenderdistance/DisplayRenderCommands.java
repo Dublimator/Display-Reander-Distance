@@ -30,12 +30,10 @@ public class DisplayRenderCommands implements CommandExecutor, TabExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             sender.sendMessage("Only player can use this command!");
             return true;
         }
-
-        Player player = (Player) sender;
 
         if (command.getName().equalsIgnoreCase("drd") && player.hasPermission("drdistance.commands.drd")) {
             createMenu(player);
@@ -72,6 +70,7 @@ public class DisplayRenderCommands implements CommandExecutor, TabExecutor {
 
         Inventory inventory = Bukkit.createInventory(player, 9, plugin.getConfig().getString("menu-name", "DRD Menu"));
 
+        assert buttonsKeys != null;
         for (String buttonKey : buttonsKeys.getKeys(false)) {
             ConfigurationSection buttonMap = buttonsKeys.getConfigurationSection(buttonKey);
 
